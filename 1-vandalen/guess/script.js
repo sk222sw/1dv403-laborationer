@@ -3,7 +3,7 @@
 window.onload = function(){
 	
 	var secret = Math.floor((Math.random() * 100) + 1); // Detta tal behöver bytas ut mot ett slumpat tal.
-	var numberOfGuesses = 0;
+	var numberOfGuesses = 0;		//Initierar en variabel som håller reda på antalet gissningar.
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var guess = function(number){
 		console.log("Det hemliga talet: " + secret); // Du når den yttre variabeln secret innifrån funktionen.
@@ -12,11 +12,11 @@ window.onload = function(){
 		// Plats för förändring.
 		
 
-			if ((parseFloat(number) !== parseInt(number)) || (isNaN(number))) {	
+			if ((parseFloat(number) !== parseInt(number)) || (isNaN(number))) {	//Kollar så att gissningen(number) är ett heltal och inte något annat.
 				return [false, "Ange ett heltal!"];
 			}
 			
-			numberOfGuesses +=1;
+			numberOfGuesses +=1;			//Om gissningen är ett heltal så ökar numberOfGuesses med 1.
 			
 			if (number <= 0 || number >= 100) {
 				return [false, "Talet är utanför intervallet 0 - 100!"];
