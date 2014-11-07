@@ -8,11 +8,21 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
+		var replace = '';
+		var replaceA = '#';
+		
+		for (var i = 0; i < str.length; i++) {
+			if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90 || str.charCodeAt(i) >=192 && str.charCodeAt(i) <=222) {
+				replace = replace + str.charAt(i).toLowerCase().replace('a', replaceA);
+			}
+			
+			else {
+				replace = replace + str.charAt(i).toUpperCase().replace('A', replaceA);
+			}
+		}
+		return replace;
 
-
-
-
-
+	
 
 	};
 	// ------------------------------------------------------------------------------
