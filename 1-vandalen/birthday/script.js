@@ -6,10 +6,11 @@ window.onload = function(){
 	var birthday = function(date){
 		
 
+			
+		date = new Date(date);
+		var copy = new Date();
 
-			// Din kod här.
-
-
+		return date.setTime(date.getTime());
 
 
 	};
