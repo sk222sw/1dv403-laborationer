@@ -5,14 +5,17 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
-
-			
+		
 		date = new Date(date);
-		var copy = new Date();
-
-		return date.setTime(date.getTime());
-
-
+		
+		
+		var today = new Date();
+		
+		// var msToDays = 1000 / 3600 / 24;				funkar inte?
+		
+		var birthday = Math.floor(Date.parse(date) / 1000 / 3600 / 24);
+		
+		return Math.floor(birthday - (Date.parse(today) / 1000 / 3600 / 24) + 1);
 	};
 	// ------------------------------------------------------------------------------
 
