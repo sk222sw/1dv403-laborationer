@@ -8,16 +8,19 @@ window.onload = function(){
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
-		var replace = '';
-		var replaceA = '#';
+		var replace = '';			//Tom strängvariabel 
+		var replaceOne = 'A';		//Initierare variabler här ifall man skulle vilja byta vilka bokstäver som ska ändras.
+		var replaceTwo = 'a';
+		var replaceWith = '#';
 		
-		for (var i = 0; i < str.length; i++) {
+		//Loopa igenom strängen och byt ut stora och små bokstäver, och byt ut a, och A till #.
+		for (var i = 0; i < str.length; i++) {			
 			if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90 || str.charCodeAt(i) >=192 && str.charCodeAt(i) <=222) {
-				replace = replace + str.charAt(i).toLowerCase().replace('a', replaceA);
+				replace = replace + str.charAt(i).toLowerCase().replace(replaceTwo, replaceWith);
 			}
 			
 			else {
-				replace = replace + str.charAt(i).toUpperCase().replace('A', replaceA);
+				replace = replace + str.charAt(i).toUpperCase().replace(replaceOne, replaceWith);
 			}
 		}
 		return replace;
