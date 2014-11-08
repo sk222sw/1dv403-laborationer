@@ -5,17 +5,42 @@ window.onload = function(){
 	
 	var birthday = function(date){
 		
+		var userBirthdate = new Date(date);
 		
-		date = new Date(date);
+		var userBirthday = userBirthdate.getDay();
+		var userBirthmonth = userBirthdate.getMonth() + 1;
+		var userBirthyear = userBirthdate.getFullYear();
+		
+		var currentDate = new Date();
+		var currentMonth = currentDate.getMonth() + 1;
+		var currentDay = currentDate.getDate();
+		var currentYear = currentDate.getFullYear();
+		
+		if (userBirthyear < currentYear) {
+			userBirthdate.setFullYear(currentDate.getFullYear());
+		}
+		
+		if (userBirthyear > currentYear) {
+			userBirthdate.setFullYear(currentDate.getFullYear()) +1;
+		}
 		
 		
+		var msDifference =  userBirthdate.getTime() - currentDate.getTime() ;
+		var dayDifference = Math.floor(msDifference / 1000 / 3600 / 24) +1;
+		
+		//Om användaren redan fyllt år så blir det inte -(antal dagar kvar)
+		if (dayDifference < 0) {					
+			dayDifference = dayDifference * 2 +365;
+		}
+		
+		return dayDifference;
+		
+	/*	date = new Date(date);
 		var today = new Date();
-		
 		// var msToDays = 1000 / 3600 / 24;				funkar inte?
-		
 		var birthday = Math.floor(Date.parse(date) / 1000 / 3600 / 24);
 		
-		return Math.floor(birthday - (Date.parse(today) / 1000 / 3600 / 24) + 1);
+		return Math.floor(birthday - (Date.parse(today) / 1000 / 3600 / 24) + 1); */
 	};
 	// ------------------------------------------------------------------------------
 
