@@ -11,8 +11,22 @@ var makePerson = function(persArr){
 
     var persons = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
     
+    function compare(value1, value2) {
+        if (value1 < value2) {
+            return -1;
+        } else if (value1 > value2) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    
+    var ageSorted = persons(compare);
+    persons.minAge = ageSorted[0];    
+    //persons = sortPersons();
+    
     persons.names = persons.name;
-    persons.minAge = persons.age;
+
     persons.maxAge = persons.age;
     persons.averageAge = persons.age;
     
@@ -26,5 +40,5 @@ var makePerson = function(persArr){
 	
     return persons;
     
-}
+};
 
