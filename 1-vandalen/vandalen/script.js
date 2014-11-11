@@ -9,9 +9,15 @@ samtliga namn sorterade i bokstavsordning.
 
 var makePerson = function(persArr){
 
-    var persons = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
+ var persons = [
+        {name: "John Häggerud", age: 37},
+        {name: "Johan Leitet", age: 36}, 
+        {name: "Mats Loock", age: 46}
+        ];
     
-    function compare(value1, value2) {
+    persons.sort(function compare(value1, value2) {
+        value1 = value1.name;
+        value2 = value2.name;
         if (value1 < value2) {
             return -1;
         } else if (value1 > value2) {
@@ -19,14 +25,19 @@ var makePerson = function(persArr){
         } else {
             return 0;
         }
-    }
+    });
     
-    var ageSorted = persons(compare);
-    persons.minAge = ageSorted[0];    
-    //persons = sortPersons();
-    
-    persons.names = persons.name;
+    persons.names = persons.map(function(persons){
+        return persons.name;
+    }).join(", ");
 
+    //Sortera efter ålder: 
+    
+    var personsSortAge = persons;
+    
+
+    persons.minAge = personsSortAge;  
+    
     persons.maxAge = persons.age;
     persons.averageAge = persons.age;
     
