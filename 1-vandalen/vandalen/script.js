@@ -8,7 +8,7 @@ samtliga namn sorterade i bokstavsordning.
 */
 
 var makePerson = function(persArr){
-
+    persArr = persons;
  var persons = [
         {name: "John Häggerud", age: 37},
         {name: "Johan Leitet", age: 36}, 
@@ -33,21 +33,27 @@ var makePerson = function(persArr){
 
     //Sortera efter ålder: 
     
-    var personsSortAge = persons;
+    var personsSortAge = persons.sort(function(a, b) {
+            return a.age - b.age;
+        });
     
-
-    persons.minAge = personsSortAge;  
+    persons.maxAge = personsSortAge[persons.length -1].age;
     
-    persons.maxAge = persons.age;
-    persons.averageAge = persons.age;
+    persons.minAge = personsSortAge[0].age;  
     
-	var persObj = {};
-	persObj.names;
-	persObj.age;
-	
-	var returnObj = {};
-	returnObj.names;
-	returnObj.minAge;
+    var sum = 0;
+    for (var personCounter = 0; personCounter < persons.length; personCounter++) {
+        sum += Math.round(persons[personCounter].age / persons.length);
+    }
+    
+    persons.averageAge = sum;
+    
+    /*
+    for (int salaryCounter = 0; salaryCounter < salaries.Length; salaryCounter++)
+            {
+                salaries[salaryCounter] = ReadInt("Ange lön nummer " + (salaryCounter + 1) + ": ");
+            }
+    */
 	
     return persons;
     
