@@ -14,22 +14,13 @@ var makePerson = function(persArr){
         {name: "Johan Leitet", age: 36}, 
         {name: "Mats Loock", age: 46}
         ];
+
+    //Sortera efter namn:
+    var names = persons.map(function(value) {
+       return value.name; 
+    }).sort().join(", ");
     
-    persons.sort(function compare(value1, value2) {
-        value1 = value1.name;
-        value2 = value2.name;
-        if (value1 < value2) {
-            return -1;
-        } else if (value1 > value2) {
-            return 1;
-        } else {
-            return 0;
-        }
-    });
-    
-    persons.names = persons.map(function(persons){
-        return persons.name;
-    }).join(", ");
+    persons.names = names;
 
     //Sortera efter ålder: 
     
@@ -59,3 +50,22 @@ var makePerson = function(persArr){
     
 };
 
+/* gammal sortering: 
+ persons.sort(function compare(value1, value2) {
+        value1 = value1.name;
+        value2 = value2.name;
+        if (value1 < value2) {
+            return -1;
+        } else if (value1 > value2) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+    
+
+    persons.names = persons.map(function(persons){
+        return persons.name;
+    }).join(", ");
+
+**/
