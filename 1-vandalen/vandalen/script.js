@@ -26,15 +26,17 @@ var makePerson = function(persArr){
             return a.age - b.age;
         });
     
+    //Tar ut det sista(största) elementet ur den sorterade arrayen och sätter det till maxAge.
     var maxAgeRet = personsSortAge[persArr.length -1].age;
     
+    //Tar ut första(lägsta) elementet ur arrayen och sätter det till minAge
     var minAgeRet = personsSortAge[0].age;  
     
+    //For-loop som lägger ihop åldrarna 
     var sum = 0;
     for (var personCounter = 0; personCounter < persArr.length; personCounter++) {
         sum += persArr[personCounter].age / persArr.length;
     }
-    
     var averageAgeRet = Math.round(sum);
     
 	return {
