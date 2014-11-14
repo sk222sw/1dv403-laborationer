@@ -18,15 +18,11 @@ window.onload = function(){
 			if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90 || str.charCodeAt(i) >=192 && str.charCodeAt(i) <=222) {
 				replace = replace + str.charAt(i).toLowerCase().replace(replaceTwo, replaceWith);
 			}
-			
 			else {
 				replace = replace + str.charAt(i).toUpperCase().replace(replaceOne, replaceWith);
 			}
 		}
 		return replace;
-
-	
-
 	};
 	// ------------------------------------------------------------------------------
 

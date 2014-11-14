@@ -12,7 +12,7 @@ window.onload = function(){
 		// Plats för förändring.
 		
 
-			if ((parseFloat(number) !== parseInt(number)) || (isNaN(number))) {	//Kollar så att gissningen(number) är ett heltal och inte något annat.
+			if ((parseFloat(number) !== parseInt(number, 10)) || (isNaN(number))) {	//Kollar så att gissningen(number) är ett heltal och inte något annat.
 				return [false, "Ange ett heltal!"];
 			}
 			
