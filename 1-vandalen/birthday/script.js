@@ -6,6 +6,8 @@ window.onload = function(){
 	var birthday = function(date){
 		
 		var userBirthdate = new Date(date);
+		
+		console.log(userBirthdate);
 
 		var userBirthyear = userBirthdate.getFullYear();
 		
