@@ -1,8 +1,7 @@
-"use strict";window.onload = function(){
-    
-    
+"use strict";
+
     var engine = {
         
     };
-    alert('hej');
-};
+    
+

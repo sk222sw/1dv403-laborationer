@@ -31,3 +31,10 @@ Message.prototype.getHTMLText = function() {
 Message.prototype.getDateText = function() {
     return Message.getDate;
 };
+/*
+var mess = new Message("hej", new Date());
+alert(mess);
+alert(mess.getText());
+mess.setText("en annan text");
+alert(mess);
+*/
