@@ -3,13 +3,43 @@
 <head>
     <meta charset="utf-8" />
     <title>Labby Message</title>
+
+    <link rel="stylesheet" href="css/css.css" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    
 </head>
     <body>
-        
-        <script type="text/javascript" src="script/Message.js"></script>
-        <script type="text/javascript" src="script/script.js"></script>
-        <script type="text/javascript" src="script/MessageBoard.js"></script>
-
-        
+        <div id="container">
+            <header>
+                <h1>¡Funky mezsage!</h1>
+            </header>
+            
+            <main>
+                <section id="mainsection">
+                    <section class="oldMsg">
+                        
+                        <div id="buttons">
+                            <div id="timeButton"></div>
+                            <div id="deleteButton"></div>
+                            <p class="time">14:30:30</p>                            
+                        </div>
+                        
+                        <div id="oldMessageText">                        
+                            <p class="msgText">Ett gammalt meddelande .__.</p>
+                        </div>
+                    </section>
+                    
+                    <section id="newTextSection">
+                        <p id="messageCounter">Antal meddelanden: 0</p>
+                        <textarea id="newMsg" name="textarea" rows="15" cols="81">Skriv ditt meddelande</textarea>
+                    </section>
+                </section>
+            </main>
+            
+            <script type="text/javascript" src="script/Message.js"></script>
+            <script type="text/javascript" src="script/script.js"></script>
+            <script type="text/javascript" src="script/MessageBoard.js"></script>
+        </div>
     </body>
 </html>

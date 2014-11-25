@@ -1,0 +1,133 @@
+/*
+container
+    main
+        header
+            h1
+        section
+            p
+            textarea
+*/
+
+container: {
+    width: 600px;
+}
+
+main {
+    width: 600px;
+    
+    margin: 0 auto;    
+    
+
+}
+
+#mainsection {
+    width: 597px;
+
+    background: #f8f8f8;
+    
+    
+    border-right: solid black 2px;
+    border-left: solid black 2px;
+}
+
+header {
+    margin: 0 auto;
+    margin-bottom: 0px;
+    background: #6CA4FF;
+    
+    width: 603px;
+    
+    border: solid black 2px;
+    border-bottom: solid black 2px;
+    
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h1 {
+    position: relative;
+    margin: 0 auto;
+    
+    text-align: center;
+    color: white;
+    text-shadow: 0px 2px 2px #00235E;
+    font-family: "Rock Salt";
+    
+}
+
+.area {
+    position: relative;
+}
+
+.oldMsg {
+    position: relative;
+
+    width: 550px;
+    border: solid white 2px;
+    
+    margin-bottom: 65px;
+    padding: -2px;
+}
+
+.time {
+    text-align: right;
+    font-size: 10px;
+}
+
+
+#timeButton {
+	background: url('../pics/checksprite.png') no-repeat -2px -2px;
+	width: 12px;
+	height: 11px;
+	display: inline-block;
+}
+
+#deleteButton {
+	background: url('../pics/checksprite.png') no-repeat -17px -2px;
+	width: 13px;
+	height: 13px;
+	display: inline-block;
+}
+
+#oldMessageText {
+    border-bottom: solid #0004FF 2px;
+    border-top: solid #0004FF 2px;
+    border-left: solid #0004FF 2px;
+    width: 500px;
+    float: left;
+    
+    background-color: #6ca4ff;
+    color: white;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 15px;
+    
+}
+
+#buttons {
+    padding: 3px;
+    padding-bottom: 1px;
+    border-right: solid #0004FF 2px;
+    border-top: solid #0004FF 2px;
+    border-bottom: solid #0004FF 2px;
+    float: right;
+}
+
+#newTextSection {
+    display: block;
+    
+    font-family: 'Arial Black';
+    font-size: 11px;
+}
+
+#messageCounter {
+    text-align: right;
+}
+
+.msgText {
+    padding-left: 5px;
+}

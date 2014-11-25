@@ -1,7 +1,5 @@
 "use strict";
 
-
-
     var MessageBoard = {
         
         messages: [],
@@ -11,7 +9,6 @@
             MessageBoard.messages.push("1", 2, 54, "hej");
             console.log(MessageBoard.messages);
         }
-
     };
 
 window.onload = MessageBoard.init;
