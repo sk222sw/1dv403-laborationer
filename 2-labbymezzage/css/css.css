@@ -131,3 +131,8 @@ h1 {
 .msgText {
     padding-left: 5px;
 }
+
+#textarea {
+    width: 550px;
+    height: 100px;
+}
