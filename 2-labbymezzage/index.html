@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="css/css.css" />
     
-    <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>-->
     
 </head>
     <body>
@@ -32,14 +32,17 @@
                     
                     <section id="newTextSection">
                         <p id="messageCounter">Antal meddelanden: 0</p>
-                        <textarea id="newMsg" name="textarea" rows="15" cols="81">Skriv ditt meddelande</textarea>
+                        <form>
+                            <textarea id="textarea" name="textarea" rows="15" cols="81">Skriv ditt meddelande</textarea>
+                            <input type="submit" value="Submit" id="submit" />
+                        </form>
                     </section>
-                </section>
+                </section> 
             </main>
             
-            <script type="text/javascript" src="script/Message.js"></script>
-            <script type="text/javascript" src="script/script.js"></script>
+
             <script type="text/javascript" src="script/MessageBoard.js"></script>
+            <script type="text/javascript" src="script/message.js"></script>            
         </div>
     </body>
 </html>
