@@ -13,30 +13,26 @@
         },
         
         createMessage: function (e){
-            var textarea = document.getElementById("textarea");
-            
             MessageBoard.messages.push(new Message(textarea.value, new Date()));
-            var toText = textarea.value;
-            textarea.placeholder = "Skriv ditt meddelande.";
-            // MessageBoard.writeMessage(toText);
-            console.log(MessageBoard.messages[0].toString());
-
+            MessageBoard.writeMessages(MessageBoard.messages);
             return false; // för att förhindra att sidan defaultladdas om
         },
         
         writeThisMessage: function(){
-            
-        }
+
+        },
         
         writeMessages: function (message) {
-            var div = document.createElement("div");
-            var msgSection = document.getElementById("msgSection");
-            var p1 = document.createTextNode(message);
             
-            div.setAttribute("class", "messageDiv2");
-            msgSection.appendChild(div);
-            document.getElementById("msgText").innerHTML = p1;
-            message.preventDefault();
+            MessageBoard.textarea.placeholder = "Skriv här";
+            MessageBoard.textarea.value = "";   //Tar bort den inskrivna texten
+            
+            MessageBoard.content.innerHTML = "";  //Raderar alla meddelanden innan loopen skriver ut dem igen
+            
+            for (var i = 0; i < MessageBoard.messages.length; i++) {
+                MessageBoard.writeThisMessage(i);
+            }
+            
         },
     
     };
