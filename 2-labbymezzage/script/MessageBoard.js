@@ -23,6 +23,7 @@
             var deleteButton = document.createElement("input");
             var messageDiv = document.getElementById("msgSection");
             var mess = document.getElementById("mainsection");
+            var pTime = document.createElement("p");
 
             deleteButton.setAttribute("type", "submit");
             deleteButton.setAttribute("value", "delete");
@@ -30,8 +31,15 @@
             
             div.className = "messageDiv";
             
-            div.innerHTML = "hej";
+            
+            //hittat på http://stackoverflow.com/questions/6312993/javascript-seconds-to-time-string-with-format-hhmmss
+            var timeString = MessageBoard.messages[thisMess].getDate().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");  
+            
+            div.innerHTML = MessageBoard.messages[thisMess].getText();
+            pTime.innerHTML = timeString;
+            
             messageDiv.appendChild(div);
+            div.appendChild(pTime);
 
             // div.className = "messageDiv2";
             // div.innerHTML = MessageBoard.messages[thisMess].toString();
@@ -41,10 +49,10 @@
 
         
         writeMessages: function (message) {
-            // MessageBoard.textarea.placeholder = "Skriv här";
-            // MessageBoard.textarea.value = "";   //Tar bort den inskrivna texten från textarea
+            MessageBoard.textarea.placeholder = "Skriv här";
+            MessageBoard.textarea.value = "";   //Tar bort den inskrivna texten från textarea
 
-            // MessageBoard.messageDiv.innerHTML = "";  //Raderar alla meddelanden innan loopen skriver ut dem igen
+            MessageBoard.messageDiv.innerHTML = "";  //Raderar alla meddelanden innan loopen skriver ut dem igen
 
             for (var i = 0; i < MessageBoard.messages.length; i++) {
                 MessageBoard.writeThisMessage(i);
