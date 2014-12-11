@@ -20,13 +20,16 @@
         
         writeThisMessage: function(thisMess){
             var div = document.createElement("div");
-            var deleteButton = document.createElement("input");
-            var messageDiv = document.getElementById("msgSection");
             var mess = document.getElementById("mainsection");
             var pTime = document.createElement("p");
+            var deleteButton = document.createElement("div");
+            deleteButton.setAttribute("id", "deleteButton");
 
-            deleteButton.setAttribute("type", "submit");
-            deleteButton.setAttribute("value", "delete");
+            
+            var messageDiv = document.getElementById("msgSection");
+            
+            pTime.className = "smallText";
+
             console.log(MessageBoard.messages[thisMess].toString());
             
             div.className = "messageDiv";
@@ -38,9 +41,16 @@
             div.innerHTML = MessageBoard.messages[thisMess].getText();
             pTime.innerHTML = timeString;
             
+            
             messageDiv.appendChild(div);
             div.appendChild(pTime);
-
+            div.appendChild(deleteButton);
+            
+        deleteButton.onclick = function(){
+            if(confirm("Vill du ta bort?")) {
+                MessageBoard.deleteMessage(thisMess); 
+            }
+        };
             // div.className = "messageDiv2";
             // div.innerHTML = MessageBoard.messages[thisMess].toString();
             // MessageBoard.messageDiv.appendChild(div);
@@ -59,14 +69,15 @@
             }
             
         },
+        
+        deleteMessage: function(thisMess){
+            MessageBoard.messages.splice(thisMess, 1);
+            MessageBoard.writeMessages();
+            return false;
+        }
     
     };
 
-        // var para = document.createElement("p");
-        // var node = document.createTextNode("This is new.");
-        // para.appendChild(node);
-        // var element = document.getElementById("div1");
-        // element.appendChild(para);            
 
 
 window.onload = MessageBoard.init;
