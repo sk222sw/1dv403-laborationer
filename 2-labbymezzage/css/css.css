@@ -64,7 +64,7 @@ h1 {
     position: relative;
 }
 
-.oldMsg {
+.msgSection {
     position: relative;
 
     width: 550px;
@@ -94,7 +94,7 @@ h1 {
 	display: inline-block;
 }
 
-#oldMessageText {
+#messageDiv {
     border-bottom: solid #0004FF 2px;
     border-top: solid #0004FF 2px;
     border-left: solid #0004FF 2px;
@@ -107,6 +107,23 @@ h1 {
     font-size: 15px;
     
 }
+
+#messageDiv2 {
+    border-bottom: solid #0004FF 2px;
+    border-top: solid #0004FF 2px;
+    border-left: solid #0004FF 2px;
+    width: 500px;
+    float: left;
+    
+    background-color: #6ca4ff;
+    color: white;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 15px;
+    
+    height: 200px;
+
+}
+
 
 #buttons {
     padding: 3px;

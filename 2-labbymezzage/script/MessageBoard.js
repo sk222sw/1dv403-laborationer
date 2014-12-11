@@ -12,23 +12,40 @@
 
         },
         
-        createMessage: function (){
+        createMessage: function (e){
             var textarea = document.getElementById("textarea");
             
             MessageBoard.messages.push(new Message(textarea.value, new Date()));
-            textarea.placeholder = "Skriv ditt meddelande.";
             var toText = textarea.value;
-            MessageBoard.writeMessage(toText);
+            textarea.placeholder = "Skriv ditt meddelande.";
+            // MessageBoard.writeMessage(toText);
+            console.log(MessageBoard.messages[0].toString());
+
             return false; // för att förhindra att sidan defaultladdas om
         },
         
-        writeMessage: function (message) {
-            var div = document.getElementById("msgText");
-            document.getElementById("msgText").innerHTML = message;
+        writeThisMessage: function(){
+            
         }
+        
+        writeMessages: function (message) {
+            var div = document.createElement("div");
+            var msgSection = document.getElementById("msgSection");
+            var p1 = document.createTextNode(message);
+            
+            div.setAttribute("class", "messageDiv2");
+            msgSection.appendChild(div);
+            document.getElementById("msgText").innerHTML = p1;
+            message.preventDefault();
+        },
+    
     };
 
-            
+        // var para = document.createElement("p");
+        // var node = document.createTextNode("This is new.");
+        // para.appendChild(node);
+        // var element = document.getElementById("div1");
+        // element.appendChild(para);            
 
 
 window.onload = MessageBoard.init;
