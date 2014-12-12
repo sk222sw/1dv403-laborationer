@@ -2,13 +2,15 @@
 
     var MessageBoard = {
         messages: [],
+
+
         submit: document.getElementById("submit"),
         textarea: document.getElementById("textarea"),
         messageDiv: document.getElementById("msgSection"),
         
         init:function(e){
             document.getElementById("submit").onclick = MessageBoard.createMessage;
-
+            console.log((new Date()).toISOString().slice(0,10).replace(/-/g," "));
         },
         
         createMessage: function (e){
@@ -23,14 +25,16 @@
             var mess = document.getElementById("mainsection");
             var pTime = document.createElement("p");
             var deleteButton = document.createElement("div");
+            var timeButton = document.createElement("div");
+            
+            timeButton.setAttribute("id", "timeButton");
             deleteButton.setAttribute("id", "deleteButton");
-
             
             var messageDiv = document.getElementById("msgSection");
             
             pTime.className = "smallText";
 
-            console.log(MessageBoard.messages[thisMess].toString());
+
             
             div.className = "messageDiv";
             
@@ -43,20 +47,22 @@
             
             
             messageDiv.appendChild(div);
-            div.appendChild(pTime);
             div.appendChild(deleteButton);
+            div.appendChild(timeButton);
+            div.appendChild(pTime);
             
-        deleteButton.onclick = function(){
-            if(confirm("Vill du ta bort?")) {
-                MessageBoard.deleteMessage(thisMess); 
+            deleteButton.onclick = function(){
+                if(confirm("Vill du ta bort?")) {
+                    MessageBoard.deleteMessage(thisMess); 
+                }
+            };
+            
+            timeButton.onclick = function(){
+                alert(MessageBoard.messages[thisMess].toString());
+                return false;
             }
-        };
-            // div.className = "messageDiv2";
-            // div.innerHTML = MessageBoard.messages[thisMess].toString();
-            // MessageBoard.messageDiv.appendChild(div);
-        },
-        
 
+        },
         
         writeMessages: function (message) {
             MessageBoard.textarea.placeholder = "Skriv här";
@@ -75,6 +81,8 @@
             MessageBoard.writeMessages();
             return false;
         }
+        
+
     
     };
 

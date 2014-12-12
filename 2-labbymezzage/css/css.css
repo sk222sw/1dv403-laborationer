@@ -84,14 +84,14 @@ h1 {
 	background: url('../pics/checksprite.png') no-repeat -2px -2px;
 	width: 12px;
 	height: 11px;
-	display: inline-block;
+    float: right;
 }
 
 #deleteButton {
 	background: url('../pics/checksprite.png') no-repeat -17px -2px;
 	width: 13px;
 	height: 13px;
-	display: inline-block;
+	float:right;
 }
 
 .messageDiv {
@@ -102,7 +102,7 @@ h1 {
     
     float: left;
     background-color: #fff;
-    color: white;
+    color: red;
     font-family: 'Arial Black', sans-serif;
     font-size: 15px;
     

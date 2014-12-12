@@ -21,7 +21,21 @@ function Message (message, date) {
 }
 
 Message.prototype.toString = function() {
-    return this.getText()+" ("+this.getDate()+")";
+    var date = this.getDate();
+    
+    var monthNames = [ "januari", "februari", "mars", "april", "maj", "juni",
+        "juli", "augusti", "september", "oktober", "november", "december" ];
+    
+    var day = date.getDate();
+    var month = monthNames[date.getMonth()];
+    var year = date.getFullYear();
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+    
+    var time = this.getDate().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+    
+    return "Meddelandet skapades den " + day + " " + month + " " + year + " klockan " + time + ".";
 };
 
 Message.prototype.getHTMLText = function() {
