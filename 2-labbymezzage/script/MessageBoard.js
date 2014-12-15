@@ -25,9 +25,10 @@
         },
         
         createMessage: function (e){
-            MessageBoard.messages.push(new Message(MessageBoard.textarea.value, new Date()));
-            MessageBoard.writeMessages(MessageBoard.messages);
-
+            if (MessageBoard.textarea.value !== "") {
+                MessageBoard.messages.push(new Message(MessageBoard.textarea.value, new Date()));
+                MessageBoard.writeMessages(MessageBoard.messages);
+            }
             return false; // för att förhindra att sidan defaultladdas om
         },
         
@@ -46,11 +47,7 @@
             var messageDiv = document.getElementById("msgSection");
             
             pTime.className = "smallText";
-
-
-            
             div.className = "messageDiv";
-            
             
             //hittat på http://stackoverflow.com/questions/6312993/javascript-seconds-to-time-string-with-format-hhmmss
             var timeString = MessageBoard.messages[thisMess].getDate().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");  
@@ -58,8 +55,6 @@
             div.innerHTML = MessageBoard.messages[thisMess].getText();
             pTime.innerHTML = timeString;
             
-            //Om textrutan är tom händer inget:
-            if (MessageBoard.messages[thisMess].getText() !== "") {
                 messageDiv.appendChild(div);
                 buttonDiv.appendChild(deleteButton);
                 buttonDiv.appendChild(timeButton);
@@ -68,10 +63,7 @@
                 
                 MessageBoard.textarea.placeholder = "Skriv här";
                 MessageBoard.textarea.value = "";   //Tar bort den inskrivna texten från textarea
-                
-            } else {
-                MessageBoard.textarea.placeholder = "Var god skriv ett meddelande.";
-            }
+
             
             deleteButton.onclick = function(){
                 if(confirm("Vill du ta bort?")) {
@@ -87,8 +79,8 @@
         },
         
         writeMessages: function (message) {
-            MessageBoard.messageDiv.innerHTML = "";  //Raderar alla meddelanden innan loopen skriver ut dem igen
 
+            MessageBoard.messageDiv.innerHTML = "";  //Raderar alla meddelanden innan loopen skriver ut dem igen
             for (var i = 0; i < MessageBoard.messages.length; i++) {
                 MessageBoard.writeThisMessage(i);
             }
@@ -96,7 +88,6 @@
                 
                 var messages = document.getElementById("messageCount");
                 messages.innerHTML = "Antal meddelanden: " + count;
-            
                 return false;
 
             
