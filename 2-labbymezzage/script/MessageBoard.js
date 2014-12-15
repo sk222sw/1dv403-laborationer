@@ -8,9 +8,20 @@
         textarea: document.getElementById("textarea"),
         messageDiv: document.getElementById("msgSection"),
         
-        init:function(e){
+        
+        
+        init:function(){
             document.getElementById("submit").onclick = MessageBoard.createMessage;
-            console.log((new Date()).toISOString().slice(0,10).replace(/-/g," "));
+            // console.log((new Date()).toISOString().slice(0,10).replace(/-/g," "));
+            
+                MessageBoard.textarea.keypress = function(event) {
+                        if (event.keyCode == 13 && event.shiftKey) {
+                         return false;
+                         }
+                         else {
+                         MessageBoard.writeMessages();                           
+                         }
+                };
         },
         
         createMessage: function (e){
@@ -26,7 +37,9 @@
             var pTime = document.createElement("p");
             var deleteButton = document.createElement("div");
             var timeButton = document.createElement("div");
+            var buttonDiv = document.createElement("div");
             
+            buttonDiv.setAttribute("class", "buttonDiv")
             timeButton.setAttribute("id", "timeButton");
             deleteButton.setAttribute("id", "deleteButton");
             
@@ -45,11 +58,14 @@
             div.innerHTML = MessageBoard.messages[thisMess].getText();
             pTime.innerHTML = timeString;
             
-            
-            messageDiv.appendChild(div);
-            div.appendChild(deleteButton);
-            div.appendChild(timeButton);
-            div.appendChild(pTime);
+            //Om textrutan är tom händer inget:
+            if (MessageBoard.messages[thisMess].getText() !== "") {
+                messageDiv.appendChild(div);
+                buttonDiv.appendChild(deleteButton);
+                buttonDiv.appendChild(timeButton);
+                buttonDiv.appendChild(pTime);
+                div.appendChild(buttonDiv);
+            }
             
             deleteButton.onclick = function(){
                 if(confirm("Vill du ta bort?")) {
