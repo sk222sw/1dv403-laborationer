@@ -29,6 +29,9 @@
                 MessageBoard.messages.push(new Message(MessageBoard.textarea.value, new Date()));
                 MessageBoard.writeMessages(MessageBoard.messages);
             }
+            else {
+                MessageBoard.textarea.placeholder = "Var god skriv ett meddelande.";
+            }
             return false; // för att förhindra att sidan defaultladdas om
         },
         
