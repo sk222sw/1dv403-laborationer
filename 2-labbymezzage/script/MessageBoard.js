@@ -27,7 +27,7 @@
         createMessage: function (e){
             MessageBoard.messages.push(new Message(MessageBoard.textarea.value, new Date()));
             MessageBoard.writeMessages(MessageBoard.messages);
-            // console.log(MessageBoard.messages.toString());
+
             return false; // för att förhindra att sidan defaultladdas om
         },
         
@@ -65,6 +65,12 @@
                 buttonDiv.appendChild(timeButton);
                 buttonDiv.appendChild(pTime);
                 div.appendChild(buttonDiv);
+                
+                MessageBoard.textarea.placeholder = "Skriv här";
+                MessageBoard.textarea.value = "";   //Tar bort den inskrivna texten från textarea
+                
+            } else {
+                MessageBoard.textarea.placeholder = "Var god skriv ett meddelande.";
             }
             
             deleteButton.onclick = function(){
@@ -81,15 +87,23 @@
         },
         
         writeMessages: function (message) {
-            MessageBoard.textarea.placeholder = "Skriv här";
-            MessageBoard.textarea.value = "";   //Tar bort den inskrivna texten från textarea
-
             MessageBoard.messageDiv.innerHTML = "";  //Raderar alla meddelanden innan loopen skriver ut dem igen
 
             for (var i = 0; i < MessageBoard.messages.length; i++) {
                 MessageBoard.writeThisMessage(i);
             }
+                var count = MessageBoard.messageCounter();  
+                
+                var messages = document.getElementById("messageCount");
+                messages.innerHTML = "Antal meddelanden: " + count;
             
+                return false;
+
+            
+        },
+        
+        messageCounter: function(e) {
+            return MessageBoard.messages.length;
         },
         
         deleteMessage: function(thisMess){
