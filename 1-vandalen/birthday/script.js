@@ -56,7 +56,7 @@ window.onload = function(){
 	submit.addEventListener("click", function(e){
 		e.preventDefault(); // Hindra formuläret från att skickas till servern. Vi hanterar allt på klienten.
 
-		p.classList.remove( "error");
+		p.classList.remove("error");
 
 		try {
 			var answer = birthday(input.value) // Läser in texten från textrutan och skickar till funktionen "convertString"
