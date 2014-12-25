@@ -29,7 +29,14 @@ main {
     
     background-color: rgba(209, 141, 44, 0.3);
     overflow: auto;
+}
+
+#submit {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: rgba(125, 87, 46, 0.9);
     
+    border: none;
+    border-radius: 5px;
 }
 
 #newTextSection {

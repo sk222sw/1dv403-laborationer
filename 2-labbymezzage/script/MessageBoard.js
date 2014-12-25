@@ -42,6 +42,7 @@
             var deleteButton = document.createElement("div");
             var timeButton = document.createElement("div");
             var buttonDiv = document.createElement("div");
+            var link = document.createElement("a");
             
             buttonDiv.setAttribute("class", "buttonDiv")
             timeButton.setAttribute("id", "timeButton");
@@ -59,10 +60,11 @@
             pTime.innerHTML = timeString;
             
                 messageDiv.appendChild(div);
+                link.appendChild(buttonDiv);
                 buttonDiv.appendChild(deleteButton);
                 buttonDiv.appendChild(timeButton);
                 buttonDiv.appendChild(pTime);
-                div.appendChild(buttonDiv);
+                div.appendChild(link);
                 
                 MessageBoard.textarea.placeholder = "Skriv här";
                 MessageBoard.textarea.value = "";   //Tar bort den inskrivna texten från textarea
