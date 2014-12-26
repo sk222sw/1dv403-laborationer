@@ -28,6 +28,16 @@ var Memory = {
         picture.onclick = function() {
             picture.removeAttribute("src");
             picture.setAttribute("src", "memory/pics/" + thisPic);
+            
+            //Om en bricka är vänd redan
+            
+            
+            //Ändra tillbaka efter lite tid
+            setTimeout(function(){
+                picture.removeAttribute("src");
+                picture.setAttribute("src", "memory/pics/" + 0 + ".png"); 
+            }, 2000);
+            
         };
         
         return false;
