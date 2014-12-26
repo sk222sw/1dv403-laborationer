@@ -18,18 +18,22 @@ var Memory = {
     },
     
     generatePic: function(thisPic) {
-        console.log(Memory.picArray);
-        
         var memory = document.getElementById("memory");
-        
-        var arre = document.getElementById("arre");
-        var arre2 = document.getElementById("tede");
+
         var picture = document.createElement("img");
         
-        picture.setAttribute("src", "memory/pics/" + thisPic);
+        picture.setAttribute("src", "memory/pics/" + 0+".png");
         memory.appendChild(picture);
         
+        picture.onclick = function() {
+            picture.removeAttribute("src");
+            picture.setAttribute("src", "memory/pics/" + thisPic);
+        };
+        
         return false;
+    },
+    
+    changeURL: function(thisPic){
     }
     
 };
