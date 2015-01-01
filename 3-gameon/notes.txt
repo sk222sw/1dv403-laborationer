@@ -1,0 +1,35 @@
+Vägar
+
+Övergripande:
+noll kort vänt: 
+
+    öppna ett kort - det fortsätter vara öppet
+    öppna ett till
+        korten matchar varandra
+            båda korten fortsätter vara öppna och kan inte klickas på
+        
+        korten matchar inte varandra
+            båda korten vänds tillbaka
+    
+    antal drag uppdateras
+
+
+noll kort:
+    lastTurned = null;
+    thisTurned = null;
+    
+    onclick
+    thisTurned = 4;
+    
+ett kort:
+    lastTurned = thisTurned;
+    
+    onclick
+    thisTurned = ?
+    
+    om thisTurned !== lastTurned;
+        vänd tillbaka;
+        
+    om thisTurned === lastTurned;
+        
+        
