@@ -3,8 +3,10 @@
 var Memory = {
     turned: 0,     
     oneTurned: 0,       //håller reda på om 1 bricka redan vänts upp.    
+    lastTurned: null,    //håller reda på vad förra brickan hade för array-index
+    thisTurned: null,    //håller reda på vad denna bricka har för array-index
     maxTurned: null,    //används för att kolla när man vinner.    
-    twoCardArray: [],   
+    twoCardArray: [],
     
     init: function(){
         var cols = 4;   
@@ -37,44 +39,48 @@ var Memory = {
     generatePic: function(thisPic, arrayIndex) {
         var memory = document.getElementById("memory");
         var picture = document.createElement("img");
-
-        picture.setAttribute("id", "picture" + thisPic);
+        
+        picture.setAttribute("id", thisPic);
         picture.setAttribute("class", "defaultImage");
         memory.appendChild(picture);
         
             picture.onclick = function() {
                 picture.removeAttribute("src");
                 picture.setAttribute("src", "memory/pics/" + thisPic + ".png");
-
-            if (Memory.twoCardArray.length < 2) {
                 
-                //Om ingen bricka är vänd än    
-                if (Memory.twoCardArray.length === 0) {
-                    Memory.twoCardArray.push(thisPic);
-                } else if (Memory.twoCardArray.length === 1) {
-                    Memory.twoCardArray.push(thisPic);
-                    if (Memory.twoCardArray[0] === Memory.twoCardArray[1]) {
-                        //Två matchande brickor
-                        alert("hit");
-                        Memory.twoCardArray = [];
-                    } else {
-                        //Vänd tillbaka
-                        
-                        setTimeout(function(){
-                            var pic1 = document.getElementById("picture" + Memory.twoCardArray[0]);
-                            var pic2 = document.getElementById("picture" + Memory.twoCardArray[1]);
-                            
-                            pic1.setAttribute("src", "memory/pics/0.png");
-                            pic2.setAttribute("src", "memory/pics/0.png");
-                            Memory.twoCardArray = [];                            
-                        }, 800)
-
-                    }
+                console.log("Du klickade på bilden med ID: " + picture.getAttribute("id"));
+                console.log("Förra brickan var " + Memory.lastTurned);
+                
+            //Om ingen bricka är vänd än    
+            if (Memory.oneTurned === 0) {
+                Memory.oneTurned = 1;
+                
+            }    
+            //om en bricka redan är vänd
+            else {
+                Memory.oneTurned = 0;                
+                //Om den redan uppvända brickan är samma som den som vänds upp nu
+                if (Memory.lastTurned === thisPic) {
+                    Memory.matchingBricks(thisPic);
                 }
-                
-            }  
-            
-        }; //onclick stop
+                //annars vänds de tillbaka
+                else {
+                    Memory.thisTurned = null;
+                    last = document.getElementById("lastPic");
+                    
+                    //Ändra tillbaka efter lite tid
+                    setTimeout(function(){
+                        picture.removeAttribute("src");
+                        //picture.setAttribute("src", "memory/pics/" + 0 + ".png"); 
+                        picture.setAttribute("class", "defaultImage");
+                    }, 2000);       
+                    
+                }
+            }
+                console.log("oneTurned är " + Memory.oneTurned);
+                Memory.lastTurned = thisPic;
+                var last = Memory.lastTurned;
+            }; //onclick stop
 
         return false;
     },
@@ -97,7 +103,3 @@ var Memory = {
 };
 
 window.onload = Memory.init;    
-
-
-
-

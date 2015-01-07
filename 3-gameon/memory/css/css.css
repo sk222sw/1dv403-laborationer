@@ -43,3 +43,9 @@ memory {
 p {
     color: white;
 }
+
+.defaultImage {
+    background-image:url(../pics/0.png);
+    height: 24px;
+    width: 24px;
+}
