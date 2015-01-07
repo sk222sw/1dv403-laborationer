@@ -1,5 +1,8 @@
 "use strict";
 
+// Inspiration för "twoCardArray"-strukturen
+// http://www.developphp.com/view.php?tid=1393
+
 var Memory = {
     turned: 0,     
     oneTurned: 0,       //håller reda på om 1 bricka redan vänts upp.    
@@ -26,15 +29,14 @@ var Memory = {
     //Loopar igenom arrayen och skickar med indexet till generatePic()
     generateAll: function(picArray) {
         for (var i = 0; i < picArray.length; i++) {
-            var arrayIndex = picArray[i];
-            var thisPic = arrayIndex;
-            Memory.generatePic(thisPic, arrayIndex);
+            var thisPic = picArray[i];
+            Memory.generatePic(thisPic);
         }
         return false;
     },
     
     //Genererar en bild med dess attribut
-    generatePic: function(thisPic, arrayIndex) {
+    generatePic: function(thisPic) {
         var memory = document.getElementById("memory");
         var picture = document.createElement("img");
 
@@ -43,38 +45,35 @@ var Memory = {
         memory.appendChild(picture);
         
             picture.onclick = function() {
-                picture.removeAttribute("src");
-                picture.setAttribute("src", "memory/pics/" + thisPic + ".png");
-
-            if (Memory.twoCardArray.length < 2) {
-                
-                //Om ingen bricka är vänd än    
-                if (Memory.twoCardArray.length === 0) {
-                    Memory.twoCardArray.push(thisPic);
-                } else if (Memory.twoCardArray.length === 1) {
-                    Memory.twoCardArray.push(thisPic);
-                    if (Memory.twoCardArray[0] === Memory.twoCardArray[1]) {
-                        //Två matchande brickor
-                        alert("hit");
-                        Memory.twoCardArray = [];
-                    } else {
-                        //Vänd tillbaka
-                        
-                        setTimeout(function(){
-                            var pic1 = document.getElementById("picture" + Memory.twoCardArray[0]);
-                            var pic2 = document.getElementById("picture" + Memory.twoCardArray[1]);
-                            
-                            pic1.setAttribute("src", "memory/pics/0.png");
-                            pic2.setAttribute("src", "memory/pics/0.png");
-                            Memory.twoCardArray = [];                            
-                        }, 800)
-
+                if (Memory.twoCardArray.length < 2) {
+                    
+                    picture.removeAttribute("src");
+                    picture.setAttribute("src", "memory/pics/" + thisPic + ".png");     
+                    
+                    //Om ingen bricka är vänd än    
+                    if (Memory.twoCardArray.length === 0) {
+                        Memory.twoCardArray.push(thisPic);
+                    } else if (Memory.twoCardArray.length === 1) {
+                        Memory.twoCardArray.push(thisPic);
+                        if (Memory.twoCardArray[0] === Memory.twoCardArray[1]) {
+                            //Två matchande brickor
+                            alert("hit");
+                            Memory.twoCardArray = [];
+                        } else {
+                            //Vänd tillbaka
+                            setTimeout(function(){
+                                var pic1 = document.getElementById("picture" + Memory.twoCardArray[0]);
+                                var pic2 = document.getElementById("picture" + Memory.twoCardArray[1]);
+                                
+                                pic1.setAttribute("src", "memory/pics/0.png");
+                                pic2.setAttribute("src", "memory/pics/0.png");
+                                Memory.twoCardArray = [];                            
+                            }, 800)
+    
+                        }
                     }
-                }
-                
-            }  
-            
-        }; //onclick stop
+                } 
+            }; //onclick stop
 
         return false;
     },
