@@ -26,17 +26,16 @@ header h1 {
 main {
     position:relative;
     margin: 0 auto;
-    background-color: #000;
     width: 65%;
     height: 90%;
 }
 
-memory {
+#memory {
     margin-left: auto;
     margin-right: auto;
     position: relative;
     
-    width: 90%;
+    width: 100px;
     color: white;
 }
 
