@@ -45,3 +45,4 @@ Message.prototype.getHTMLText = function() {
 Message.prototype.getDateText = function() {
     return Message.getDate;
 };
+

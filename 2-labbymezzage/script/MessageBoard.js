@@ -36,16 +36,22 @@
         },
         
         writeThisMessage: function(thisMess){
+            // var deleteButton = document.createElement("div");
+            // var timeButton = document.createElement("div");
+            
             var div = document.createElement("div");
             var mess = document.getElementById("mainsection");
             var pTime = document.createElement("p");
-            var deleteButton = document.createElement("div");
-            var timeButton = document.createElement("div");
             var buttonDiv = document.createElement("div");
+            var deleteA = document.createElement("a");
+            var timeA = document.createElement("a");
             
-            buttonDiv.setAttribute("class", "buttonDiv")
-            timeButton.setAttribute("id", "timeButton");
-            deleteButton.setAttribute("id", "deleteButton");
+            buttonDiv.setAttribute("class", "buttonDiv");
+            deleteA.setAttribute("id", "deleteButton");
+            deleteA.setAttribute("href", "#");
+            timeA.setAttribute("id", "timeButton");
+            timeA.setAttribute("href", "#");
+            timeA.setAttribute("tabindex", "3"); //för att få tab-index i rätt ordning.
             
             var messageDiv = document.getElementById("msgSection");
             
@@ -57,28 +63,26 @@
             
             div.innerHTML = MessageBoard.messages[thisMess].getText();
             pTime.innerHTML = timeString;
-            
-                messageDiv.appendChild(div);
-                buttonDiv.appendChild(deleteButton);
-                buttonDiv.appendChild(timeButton);
-                buttonDiv.appendChild(pTime);
-                div.appendChild(buttonDiv);
+                
+            messageDiv.appendChild(div);
+            div.appendChild(buttonDiv);
+            buttonDiv.appendChild(deleteA);
+            buttonDiv.appendChild(timeA);
+            buttonDiv.appendChild(pTime);
                 
                 MessageBoard.textarea.placeholder = "Skriv här";
                 MessageBoard.textarea.value = "";   //Tar bort den inskrivna texten från textarea
 
-            
-            deleteButton.onclick = function(){
+            deleteA.onclick = function(){
                 if(confirm("Vill du ta bort?")) {
                     MessageBoard.deleteMessage(thisMess); 
                 }
             };
             
-            timeButton.onclick = function(){
+            timeA.onclick = function(){
                 alert(MessageBoard.messages[thisMess].toString());
                 return false;
             }
-
         },
         
         writeMessages: function (message) {
@@ -92,8 +96,6 @@
                 var messages = document.getElementById("messageCount");
                 messages.innerHTML = "Antal meddelanden: " + count;
                 return false;
-
-            
         },
         
         messageCounter: function(e) {
