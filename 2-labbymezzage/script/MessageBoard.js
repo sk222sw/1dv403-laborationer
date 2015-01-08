@@ -15,12 +15,12 @@
             // console.log((new Date()).toISOString().slice(0,10).replace(/-/g," "));
             
                 MessageBoard.textarea.keypress = function(event) {
-                        if (event.keyCode == 13 && event.shiftKey) {
-                         return false;
-                         }
-                         else {
-                         MessageBoard.writeMessages();                           
-                         }
+                    if (event.keyCode == 13 && event.shiftKey) {
+                        return false;
+                    }
+                    else {
+                        MessageBoard.writeMessages();                           
+                    }
                 };
         },
         
