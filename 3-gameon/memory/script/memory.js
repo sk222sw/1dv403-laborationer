@@ -6,9 +6,9 @@
 var Memory = {
     turned: 0,     
     maxTurned: null,    //används för att kolla när man vinner.    
-    twoCardArray: [],   
-    cardPosition: [],
-    counter: 0,
+    twoCardArray: [],   //används för att lagra bild-value för att matcha
+    cardPosition: [],   //används för att lagra unikt bild-id
+    counter: 0,         //variabel som lagrar hur många försök man gjort
     
     init: function(){
         var cols = 4;   
@@ -47,10 +47,10 @@ var Memory = {
         aTag.appendChild(picture);
         
             aTag.onclick = function() {
+                //Man ska bara kunna klicka om färre än 2 brickor är vända
                 if (Memory.twoCardArray.length < 2) {
-                    
+                        //Om brickan man klickar på är defaultbrickan så vänds den, annars händer inget
                         if (picture.src === picSource) {
-                            
                             picture.removeAttribute("src");
                             picture.setAttribute("src", "memory/pics/" + thisPic + ".png");     
                             
@@ -80,7 +80,7 @@ var Memory = {
                             Memory.flipBricks();
                         }
                     } else {
-                    return 0;
+                    return 0;   //Innan jag satte denna så buggade spelet när man tryckte för snabbt på en tredje bricka.
                 }
                 
                 Memory.countTries();                    
