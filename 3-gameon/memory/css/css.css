@@ -1,3 +1,7 @@
+body {
+    background-color: #E3E3EC;
+}
+
 content {
     width: 50%;
     height: 99%;
@@ -31,14 +35,18 @@ main {
 }
 
 #memory {
+    position: relative;
+    background-color: white;
+    
     margin-left: auto;
     margin-right: auto;
-    position: relative;
+    padding: 20px;
     
     width: 100px;
 }
 
 #tries {
+    text-align: center;
     font-size: 1.1em;
 }
 

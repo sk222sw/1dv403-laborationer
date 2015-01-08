@@ -14,9 +14,8 @@ var Memory = {
         var cols = 4;   
         var rows = 4;
         var picArray = RandomGenerator.getPictureArray(cols, rows);
-        Memory.maxTurned = cols * rows;    //håller reda på hur många brickor 
-                                           //som ska vara vända när man vinner.
-        Memory.generateAll(picArray);
+        Memory.maxTurned = cols * rows;    //håller reda på hur många brickor som ska vara vända när man vinner.
+        Memory.generateAll(picArray);      
     },
 
     //Loopar igenom arrayen och skickar med indexet till generatePic()
@@ -36,7 +35,7 @@ var Memory = {
         var picture = document.createElement("img");
 
         aTag.setAttribute("href", "#");
-        aTag.setAttribute("rel", "thisPic")
+        aTag.setAttribute("rel", "thisPic");
         picture.setAttribute("id", "picture" + picValue);
         picture.setAttribute("src", "memory/pics/0.png");
         picture.setAttribute("value", thisPic);
@@ -118,8 +117,4 @@ var Memory = {
     }
 };
 
-window.onload = Memory.init;    
-
-
-
-
+window.onload = Memory.init;
