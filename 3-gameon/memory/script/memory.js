@@ -46,7 +46,7 @@ var Memory = {
         memory.appendChild(aTag);
         aTag.appendChild(picture);
         
-            picture.onclick = function() {
+            aTag.onclick = function() {
                 if (Memory.twoCardArray.length < 2) {
                     
                         if (picture.src === picSource) {
