@@ -36,11 +36,10 @@ main {
     position: relative;
     
     width: 100px;
-    color: white;
 }
 
-p {
-    color: white;
+#tries {
+    font-size: 1.1em;
 }
 
 .defaultImage {

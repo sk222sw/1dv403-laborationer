@@ -8,6 +8,7 @@ var Memory = {
     maxTurned: null,    //används för att kolla när man vinner.    
     twoCardArray: [],   
     cardPosition: [],
+    counter: 0,
     
     init: function(){
         var cols = 4;   
@@ -17,14 +18,7 @@ var Memory = {
                                            //som ska vara vända när man vinner.
         Memory.generateAll(picArray);
     },
-    
-    newGame: function(){
-        var cols = 4;
-        var rows = 4;
-        var picArray = RandomGenerator.getPictureArray(cols, rows);
-        var maxTurned = cols * rows;
-    },
-    
+
     //Loopar igenom arrayen och skickar med indexet till generatePic()
     generateAll: function(picArray) {
         for (var i = 0; i < picArray.length; i++) {
@@ -34,7 +28,7 @@ var Memory = {
         }
         return false;
     },
- //------------------------------------------------------------------------------------------------------  
+
     //Genererar en bild med dess attribut
     generatePic: function(thisPic, picValue) {
         var memory = document.getElementById("memory");
@@ -54,7 +48,6 @@ var Memory = {
         aTag.appendChild(picture);
         
             picture.onclick = function() {
-                
                 if (Memory.twoCardArray.length < 2) {
                     
                         if (picture.src === picSource) {
@@ -68,19 +61,10 @@ var Memory = {
                                 Memory.twoCardArray.push(picValue);
                                 Memory.cardPosition.push(thisPic);
                                 
-                                // console.log("picValue är: " + picValue);
-                                // console.log("Id är: " + thisPic);                            
-                                
                             } else if (Memory.twoCardArray.length === 1) {
                                 
                                 Memory.twoCardArray.push(picValue);
                                 Memory.cardPosition.push(thisPic);
-                                
-                                console.log("twocardarray0 = " + Memory.twoCardArray[0]);
-                                console.log("twocardarray1 = " + Memory.twoCardArray[1]);
-                                
-                                console.log("picValue är: " + picValue);
-                                console.log("Id är: " + thisPic);                            
                                 
                                 if (Memory.cardPosition[0] === Memory.cardPosition[1]) {
                                     //Två matchande brickor
@@ -96,13 +80,20 @@ var Memory = {
                         }   else if(Memory.twoCardArray.length === 2) {
                             Memory.flipBricks();
                         }
-                }  else {
-                        return 0;
+                    } else {
+                    return 0;
                 }
-                    
+                
+                Memory.countTries();                    
             }; //onclick stop
 
         return false;
+    },
+    
+    countTries: function(){
+        var tries = document.getElementById("tries");
+        Memory.counter++;
+        tries.innerHTML = "Antal försök: " + Memory.counter;
     },
     
     flipBricks: function(){
@@ -121,9 +112,8 @@ var Memory = {
     matchingBricks: function(thisPic) {
             Memory.turned += 2;
 
-        console.log("Nu äre " + Memory.turned);
         if (Memory.turned === Memory.maxTurned) {
-            alert("Du vann!");
+            alert("Du klarade spelet på " + Memory.counter + " drag!");
         }
     }
 };
