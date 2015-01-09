@@ -4,12 +4,12 @@ var quiz = {
     questionText: document.getElementById("questionText"),
     thisQuestion: null,
     questionNumber: 1,
-    questionAddres: "http://vhost3.lnu.se:20080/question/",
+    questionAddress: "http://vhost3.lnu.se:20080/question/",
     
     init: function(){
-        var questionAddres = "http://vhost3.lnu.se:20080/question/";
+        var questionAddress = "http://vhost3.lnu.se:20080/question/";
         
-        quiz.thisQuestion = quiz.getQuestion(questionAddres + 1);
+        quiz.thisQuestion = quiz.getQuestion(questionAddress + 1);
 
         quiz.writeElements();
         var btnSubmit = document.getElementById("btnSubmit");
@@ -25,7 +25,7 @@ var quiz = {
         //set attribut
         
         //skriv ut dem
-        questionNumber.innerHTML = "Fråga: " + quiz.questionInitialNumber;
+        questionNumber.innerHTML = "Fråga: " + quiz.questionNumber;
         
     },
     
@@ -55,7 +55,7 @@ var quiz = {
     getUserInput: function(){
         var userInputArea = document.getElementById("userInputArea");
         var userAnswer = null;
-        
+
         var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {
                     
@@ -64,10 +64,13 @@ var quiz = {
                             xhr.status <= 300 ||
                             xhr.status === 304) {
 
-
+                            console.log(xhr.responseText);
+                            var JSONreturn = JSON.parse(xhr.responseText);
+                            
+                            quiz.rightOrWrong(JSONreturn.message);
 
                         } else {
-                            quiz.wrongAnswer();
+                            quiz.rightOrWrong("Fel svar!");
                             console.log("felkod: " + xhr.status);
                         }
                     }
@@ -87,8 +90,8 @@ var quiz = {
         quiz.questionText.innerHTML = e.question;
     },
     
-    wrongAnswer: function(){
-        document.getElementById("wrong").innerHTML = "Fel svar!";
+    rightOrWrong: function(message){
+        document.getElementById("rightOrWrong").innerHTML = message;
     }
     
     
