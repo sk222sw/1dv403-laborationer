@@ -3,3 +3,17 @@ main {
     margin: 0 auto;
     width: 700px;
 }
+
+main section {
+    width: 225px;
+    height: 135px;
+    padding: 1px 0px 3px 6px;
+    
+    font-family: sans-serif;
+    font-weight: bold;
+    
+    color: grey;
+    background-color: #DEDEDE;
+
+    box-shadow: 4px 4px 7px grey, inset 0 0 2px grey;
+}
