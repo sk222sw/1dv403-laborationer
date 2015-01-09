@@ -1,7 +1,8 @@
 * {
-    
-    border-bottom-right-radius: 10px;
-    border-top-left-radius: 10px;
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 
 header {
@@ -27,6 +28,7 @@ main {
     position: relative;
     margin: 0 auto;
     width: 700px;
+
 }
 
 main section {
@@ -83,8 +85,25 @@ td {
 }
 
 h1 {
-    font-family: sans-serif;   
+    margin-left: 15px;
+    font-family: "Arial-Black", sans-serif;   
     font-weight: 900;
     font-size: 3em;
+    width: 310px;
+    display: inline-block;
+}
+
+#bigQ {
+    position: relative;
+    display: inline-block;
+    margin-bottom: -64px;
+    margin-left: -25px;
+    background: url(../quizimodo.png) no-repeat;
+    background-size: 95%;
     
+    height: 120px;
+    width: 120px;
+    font-size: 5.5em;
+    font-weight: 900;
+    font-family: serif;
 }
