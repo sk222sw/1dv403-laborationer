@@ -64,9 +64,10 @@ var quiz = {
                             xhr.status <= 300 ||
                             xhr.status === 304) {
 
-                            alert("jag kom hit");
+
 
                         } else {
+                            quiz.wrongAnswer();
                             console.log("felkod: " + xhr.status);
                         }
                     }
@@ -85,6 +86,10 @@ var quiz = {
         console.log(e);
         quiz.questionText.innerHTML = e.question;
     },
+    
+    wrongAnswer: function(){
+        document.getElementById("wrong").innerHTML = "Fel svar!";
+    }
     
     
     
