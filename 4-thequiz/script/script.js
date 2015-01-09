@@ -2,14 +2,12 @@
 
 var quiz = {
     questionText: document.getElementById("questionText"),
-    thisQuestion: null,
+    thisQuestion: "http://vhost3.lnu.se:20080/question/1",
+    serverResponse: [],
     questionNumber: 1,
-    questionAddress: "http://vhost3.lnu.se:20080/question/",
     
     init: function(){
-        var questionAddress = "http://vhost3.lnu.se:20080/question/";
-        
-        quiz.thisQuestion = quiz.getQuestion(questionAddress + 1);
+        quiz.thisQuestion = quiz.getQuestion(quiz.thisQuestion);
 
         quiz.writeElements();
         var btnSubmit = document.getElementById("btnSubmit");
@@ -40,10 +38,16 @@ var quiz = {
                             
                             var JSONreturn = xhr.responseText;
                             quiz.thisQuestion = JSON.parse(JSONreturn);
+                            
 
+                            
                             console.log(quiz.thisQuestion);
+                            
+                            
                             quiz.displayQuestion(quiz.thisQuestion);
                             // quiz.questionText.innerHTML = thisQuestion.question;
+                        } else {
+                            console.log("Felkod: " + xhr.status);
                         }
                     }
                     
@@ -52,7 +56,7 @@ var quiz = {
             xhr.send(null);  
     },
     
-    getUserInput: function(){
+    getUserInput: function(address){
         var userInputArea = document.getElementById("userInputArea");
         var userAnswer = null;
 
@@ -67,10 +71,11 @@ var quiz = {
                             console.log(xhr.responseText);
                             var JSONreturn = JSON.parse(xhr.responseText);
                             
-                            quiz.rightOrWrong(JSONreturn.message);
-                            
-                            quiz.getQuestion(JSONreturn.nextURL);
-
+                            if (JSONreturn.hasOwnProperty("nextURL")) {
+                                quiz.thisQuestion = JSONreturn.nextURL;
+                                quiz.rightOrWrong(JSONreturn.message);
+                                quiz.getQuestion(JSONreturn.nextURL);
+                            }
                         } else {
                             quiz.rightOrWrong("Fel svar!");
                             console.log("felkod: " + xhr.status);
@@ -79,12 +84,11 @@ var quiz = {
                     
                 };
 
-            xhr.open("POST", "http://vhost3.lnu.se:20080/answer/1", true);
+            xhr.open("POST", quiz.thisQuestion.nextURL, true);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			userAnswer = {"answer": userInputArea.value}
 			xhr.send(JSON.stringify(userAnswer)); 
             
-        console.log(userAnswer);
     },
 
     displayQuestion: function(e){
