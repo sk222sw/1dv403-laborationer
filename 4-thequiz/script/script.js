@@ -3,8 +3,8 @@
 var quiz = {
     questionText: document.getElementById("questionText"),
     thisQuestion: null,
-    // questionNumber: 1,
-    // questionAddres: "http://vhost3.lnu.se:20080/question/",
+    questionNumber: 1,
+    questionAddres: "http://vhost3.lnu.se:20080/question/",
     
     init: function(){
         var questionAddres = "http://vhost3.lnu.se:20080/question/";
@@ -17,7 +17,6 @@ var quiz = {
     },
     
     writeElements: function() {
-        var    userInput = "";
         //skapa dom-element
         
         //gör variabler av dom-ids
@@ -26,7 +25,7 @@ var quiz = {
         //set attribut
         
         //skriv ut dem
-        questionNumber.innerHTML = "Fråga nummer " + quiz.questionInitialNumber;
+        questionNumber.innerHTML = "Fråga: " + quiz.questionInitialNumber;
         
     },
     
@@ -54,7 +53,8 @@ var quiz = {
     },
     
     getUserInput: function(){
-        var userInputArea = document.getElementById("userInputArea").value;
+        var userInputArea = document.getElementById("userInputArea");
+        var userAnswer = null;
         
         var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function() {
@@ -63,20 +63,22 @@ var quiz = {
                         if (xhr.status >= 200 && 
                             xhr.status <= 300 ||
                             xhr.status === 304) {
-                            
-                            var thisQuestion = JSON.parse(xhr.responseText);
-                            
-                            
+
+                            alert("jag kom hit");
+
+                        } else {
+                            console.log("felkod: " + xhr.status);
                         }
                     }
                     
                 };
+
             xhr.open("POST", "http://vhost3.lnu.se:20080/answer/1", true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			userAnswer = {"answer": userInputArea.value}
+			xhr.send(JSON.stringify(userAnswer)); 
             
-            xhr.setRequestHeader("Content-Type", "application/json");
-        
-        
-        console.log(userInputArea);
+        console.log(userAnswer);
     },
 
     displayQuestion: function(e){
