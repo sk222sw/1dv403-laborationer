@@ -68,6 +68,8 @@ var quiz = {
                             var JSONreturn = JSON.parse(xhr.responseText);
                             
                             quiz.rightOrWrong(JSONreturn.message);
+                            
+                            quiz.getQuestion(JSONreturn.nextURL);
 
                         } else {
                             quiz.rightOrWrong("Fel svar!");
