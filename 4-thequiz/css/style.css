@@ -68,12 +68,22 @@ td {
     background: #A3A3A3;
     border: none;
     color: #DEDEDE;
+    
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
 
     
 }
 
 #userInputArea {
     border: none;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;    
+    
 }
 
 .redBackground {
