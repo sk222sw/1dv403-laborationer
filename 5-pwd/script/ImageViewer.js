@@ -2,8 +2,11 @@
 
 // http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/
 
-var ImageViewer = {
-    xhrRequest: function(){
+var ImageViewer = function(){};
+    ImageViewer.prototype.pictures = [];
+    ImageViewer.prototype.thumbnails = [];
+    
+    ImageViewer.prototype.xhrRequest = function(){
         var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(){
                 
@@ -11,17 +14,48 @@ var ImageViewer = {
                     if (xhr.status >= 200 &&
                         xhr. status <= 300 ||
                         xhr.status === 304) {
+                        console.log("xhr klar");
+                        var JSONreturn = JSON.parse(xhr.responseText);
                         
-                        var JSONreturn = xhr.responseText;
-                        console.log(JSONreturn);
+                        return JSONreturn;
+                        
                     } else {
                         console.log("felkod: " + xhr.status);
                     }
-                } else {
-                    console.log("readystate är " + xhr.readyState);     
                 }
             };
             xhr.open("GET", "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", true);
             xhr.send(null);
-    }
-};
+    };
+    
+    // ImageViewer.prototype.returnPusher = function(JSONreturn){
+        
+    //     var windowContent = document.getElementById("windowContent");    
+            
+    //         var img = document.createElement("img");
+            
+    //         var ett = JSONreturn[1].thumbURL;
+    //         img.setAttribute("src", ett);
+    //         console.log(ett);
+            
+    //         windowContent.appendChild(img);
+            
+    //     // for (var i = 0; i < 4/*JSONreturn.length*/; i++) {
+    //     //     main.appendChild(JSONreturn[i].thumbURL);
+    //     // }
+    // }
+    
+    // ImageViewer.prototype.getThumbNails = function(JSONreturn){
+    //         for (var i = 0; i < JSONreturn.length; i++) {
+    //             ImageViewer.prototype.thumbnails.push(JSONreturn[i].thumbURL);
+                
+    //         }
+    // };
+    
+    ImageViewer.prototype.openWindow = function(){
+        Window.prototype.openWindow.call(this);
+    };
+    
+    ImageViewer.prototype.getPictures = function(){
+        
+    };

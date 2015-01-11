@@ -6,15 +6,16 @@ Window.prototype.counter = 1;
 
 Window.prototype.openWindow = function(name){
     var main = document.getElementById("main");
-
     // var menu = document.createElement("div");
     var content = document.createElement("div");
     var topBar = document.createElement("div");
     var statusBar = document.createElement("div");
     var frame = document.createElement("div");
     var closeButton = document.createElement("div");
-
-
+    var responseArray = [];
+    
+    console.log(responseArray)
+    
     frame.id = "frame";
     closeButton.classList.add("windowClose");
     frame.classList.add("newWindow");
