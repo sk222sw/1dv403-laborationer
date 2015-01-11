@@ -33,3 +33,13 @@ footer {
     
     background-color: green;
 }
+
+.newWindow {
+    height: 370px;
+    width: 280px;
+    
+    
+    
+    border: solid black 1px;
+    
+}

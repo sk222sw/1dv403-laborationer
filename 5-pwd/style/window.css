@@ -1,0 +1,29 @@
+
+/*Window styling------------------------*/
+
+.windowTopBar {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 20px;
+    
+    background-color: black;
+}
+
+.windowContent {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 330px;
+  
+  background-color: red;
+}
+
+.windowStatusBar {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 20px;
+  
+  background-color: orange;
+}
