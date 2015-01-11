@@ -1,9 +1,12 @@
 "use strict";
 
-var win = new Window();
 
 window.onload = function(){
 
-    win.openWindow();
+    Desktop.init();
+
+    // var iconImageViewer = document.getElementById("iconImageViewer");
+    
+    // iconImageViewer.addEventListener("click", Desktop.createWindowObject("win"));
 
 };
