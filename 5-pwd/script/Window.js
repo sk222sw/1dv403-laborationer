@@ -20,6 +20,7 @@ Window.prototype.openWindow = function(name){
     closeButton.classList.add("windowClose");
     frame.classList.add("newWindow");
     content.classList.add("windowContent");
+    content.setAttribute("id", "windowContent");
     topBar.classList.add("windowTopBar");
     statusBar.classList.add("windowStatusBar");
     

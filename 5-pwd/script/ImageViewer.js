@@ -17,7 +17,8 @@ var ImageViewer = function(){};
                         console.log("xhr klar");
                         var JSONreturn = JSON.parse(xhr.responseText);
                         
-                        return JSONreturn;
+                        ImageViewer.prototype.getThumbNails(JSONreturn);
+
                         
                     } else {
                         console.log("felkod: " + xhr.status);
@@ -45,15 +46,31 @@ var ImageViewer = function(){};
     //     // }
     // }
     
-    // ImageViewer.prototype.getThumbNails = function(JSONreturn){
-    //         for (var i = 0; i < JSONreturn.length; i++) {
-    //             ImageViewer.prototype.thumbnails.push(JSONreturn[i].thumbURL);
-                
-    //         }
-    // };
+    ImageViewer.prototype.getThumbNails = function(JSONreturn){
+        var windowContent = document.getElementById("windowContent");
+        
+        
+        
+        for (var URL in JSONreturn){
+            var thumbDiv = document.createElement("div");
+            var thumbImg = document.createElement("img");
+            
+            thumbImg.setAttribute("src", JSONreturn[URL].thumbURL);
+            thumbDiv.classList.add("thumbDiv");
+            thumbDiv.setAttribute("style", "width:"+JSONreturn[URL].width);
+            thumbDiv.setAttribute("style", "height:"+JSONreturn[URL].height);
+            
+            thumbDiv.appendChild(thumbImg);
+            windowContent.appendChild(thumbDiv);
+
+            // console.log(JSONreturn[URL].thumbURL);
+        }
+    };
     
     ImageViewer.prototype.openWindow = function(){
         Window.prototype.openWindow.call(this);
+        ImageViewer.prototype.xhrRequest();
+
     };
     
     ImageViewer.prototype.getPictures = function(){
