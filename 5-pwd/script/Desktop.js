@@ -2,15 +2,20 @@
 
 var Desktop = {
     
+    windowCounter: 0,
+    
     init: function(){
-    console.log("init");
     var iconImageViewer = document.getElementById("iconImageViewer");
         iconImageViewer.addEventListener("click", Desktop.createWindowObject);        
     },
     
     createWindowObject: function(){
-        var name = new Window();
+        var name = "window"+Desktop.windowCounter;
+        console.log(name);
+        name = new Window();
+        Desktop.windowCounter += 1;
         name.openWindow();
+        console.log(Desktop.windowCounter);
         return false;
     }
 };
