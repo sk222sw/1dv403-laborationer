@@ -4,12 +4,11 @@ html, body {
 
 main {
   min-height: 100%;
-  /* equal to footer height */
   margin-bottom: -60px; 
+  
 }
 
 main:after {
-  content: "";
   display: block;
 }
 

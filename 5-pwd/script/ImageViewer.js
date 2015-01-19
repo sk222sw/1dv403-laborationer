@@ -4,7 +4,7 @@
 
 var ImageViewer = function(){};
     ImageViewer.prototype.pictures = [];
-    ImageViewer.prototype.thumbnails = [];
+    ImageViewer.thumbnails = [];
     
     ImageViewer.prototype.xhrRequest = function(){
         var xhr = new XMLHttpRequest();
@@ -16,10 +16,8 @@ var ImageViewer = function(){};
                         xhr.status === 304) {
                         console.log("xhr klar");
                         var JSONreturn = JSON.parse(xhr.responseText);
-                        
                         ImageViewer.prototype.getThumbNails(JSONreturn);
 
-                        
                     } else {
                         console.log("felkod: " + xhr.status);
                     }
@@ -48,23 +46,39 @@ var ImageViewer = function(){};
     
     ImageViewer.prototype.getThumbNails = function(JSONreturn){
         var windowContent = document.getElementById("windowContent");
+        var urlCount = 0;
+        var temp = JSONreturn;
+        for (var object in JSONreturn){
         
-        
-        
-        for (var URL in JSONreturn){
             var thumbDiv = document.createElement("div");
             var thumbImg = document.createElement("img");
+            var id = thumbDiv.setAttribute("class", "thumb"+urlCount);
+            var thisURL = JSONreturn[urlCount].URL;
             
-            thumbImg.setAttribute("src", JSONreturn[URL].thumbURL);
+            thumbImg.setAttribute("src", JSONreturn[object].thumbURL);
             thumbDiv.classList.add("thumbDiv");
-            thumbDiv.setAttribute("style", "width:"+JSONreturn[URL].width);
-            thumbDiv.setAttribute("style", "height:"+JSONreturn[URL].height);
+            thumbDiv.setAttribute("style", "width:"+JSONreturn[object].width);
+            thumbDiv.setAttribute("style", "height:"+JSONreturn[object].height);
+
+            ImageViewer.prototype.setBackground(JSONreturn[object].URL, thumbDiv)
             
             thumbDiv.appendChild(thumbImg);
             windowContent.appendChild(thumbDiv);
-
+            urlCount += 1;
             // console.log(JSONreturn[URL].thumbURL);
         }
+
+        
+        
+    };
+    // image:url(
+    ImageViewer.prototype.setBackground = function(JSONurl, thumbDiv){
+        
+        thumbDiv.addEventListener("click", function(){
+            var main = document.getElementById("main");
+            main.setAttribute("style", "background-image:url("+JSONurl+")");
+        });
+        
     };
     
     ImageViewer.prototype.openWindow = function(){

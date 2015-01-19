@@ -11,11 +11,11 @@ var Desktop = {
     
     createWindowObject: function(){
         var name = "window"+Desktop.windowCounter;
-        console.log(name);
         name = new ImageViewer();
         Desktop.windowCounter += 1;
         name.openWindow();
         console.log(Desktop.windowCounter);
+
         return false;
     }
 };
