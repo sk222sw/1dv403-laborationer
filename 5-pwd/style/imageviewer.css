@@ -2,4 +2,11 @@
     position: relative;
     display: inline-block;
     
+    vertical-align: middle;
+    
+    margin: 3px;
+    padding: 2px;
+    
+    background-color: #716D00;
+    
 }

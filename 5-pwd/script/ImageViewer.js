@@ -51,18 +51,36 @@ var ImageViewer = function(){};
     ImageViewer.prototype.getThumbNails = function(JSONreturn){
         var windowContent = document.getElementById("windowContent");
         var urlCount = 0;
-        var temp = JSONreturn;
+            var width = 0;
+            var height = 0;
+            
+            console.log("Json length: " + JSONreturn.length)
+            
+        //Kolla högsta och lägsta width/height och sätt dem till variabler.    
+        for (var i = 0; i < JSONreturn.length; i++) {
+            if (JSONreturn[i].thumbWidth > width) {
+                width = JSONreturn[i].thumbWidth;
+            }
+            if (JSONreturn[i].thumbHeight > height) {
+                height = JSONreturn[i].thumbHeight;
+                
+            }
+        }    
+            
         for (var object in JSONreturn){
         
             var thumbDiv = document.createElement("div");
             var thumbImg = document.createElement("img");
             var id = thumbDiv.setAttribute("class", "thumb"+urlCount);
             var thisURL = JSONreturn[urlCount].URL;
-            
+
             thumbImg.setAttribute("src", JSONreturn[object].thumbURL);
             thumbDiv.classList.add("thumbDiv");
-            thumbDiv.setAttribute("style", "width:"+JSONreturn[object].width);
-            thumbDiv.setAttribute("style", "height:"+JSONreturn[object].height);
+            
+            //istället för setattribute(style) som skriver över det tidigare style-attributet
+            thumbDiv.style.width = width+"px";
+            thumbDiv.style.height = height+"px";
+            
 
             ImageViewer.prototype.setBackground(JSONreturn[object].URL, thumbDiv)
             
