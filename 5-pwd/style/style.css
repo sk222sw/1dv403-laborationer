@@ -1,11 +1,20 @@
+@import url('//fonts.googleapis.com/css?family=Roboto:300,500');
+
+
 html, body {
   height: 100%;
+  font-family: "Roboto";
+}
+
+body {
+  background-image: url("../pics/backg-material.jpg");
+  background-size: 100%;
+  overflow: hidden;
 }
 
 main {
   min-height: 100%;
   margin-bottom: -60px; 
-  
 }
 
 main:after {
@@ -17,11 +26,14 @@ footer, main:after {
 }
 
 footer {
-  background: orange;
+  /*background-color: rgba(0, 0, 0, 0.55);*/
+  background-color: black;
+  opacity: 0.55;
 }
 
 #iconImageViewer {
-    
+    background-image: url("../pics/imageviewerwhite.png");
+    background-repeat: no-repeat;
 }
 
 .menuIcon {
@@ -29,16 +41,5 @@ footer {
     width: 50px;
     
     margin: 10px;
-    
-    background-color: green;
-}
-
-.newWindow {
-    height: 370px;
-    width: 280px;
-    
-    
-    
-    border: solid black 1px;
     
 }

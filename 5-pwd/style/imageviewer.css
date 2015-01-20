@@ -2,11 +2,25 @@
     position: relative;
     display: inline-block;
     
-    vertical-align: middle;
+    vertical-align: middle;    
+    
+    text-align: center;
     
     margin: 3px;
     padding: 2px;
     
-    background-color: #716D00;
+    border: solid rgba(0, 0, 0, 0.2) 1px;
     
+    border-radius: 5px;
+}
+
+
+.thumbImg {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto;
+    
+    top: 50%;
+    transform: translateY(-50%);
 }

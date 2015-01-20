@@ -74,6 +74,7 @@ var ImageViewer = function(){};
             var id = thumbDiv.setAttribute("class", "thumb"+urlCount);
             var thisURL = JSONreturn[urlCount].URL;
 
+            thumbImg.classList.add("thumbImg");
             thumbImg.setAttribute("src", JSONreturn[object].thumbURL);
             thumbDiv.classList.add("thumbDiv");
             
@@ -88,8 +89,31 @@ var ImageViewer = function(){};
             windowContent.appendChild(thumbDiv);
             urlCount += 1;
         }
-
         
+//         function setOpacity(obj, opacity) {
+//           opacity = (opacity == 100)?99.999:opacity;
+          
+//           // IE/Win
+          
+//           // Safari<1.2, Konqueror
+//           obj.style.KHTMLOpacity = opacity/100;
+          
+//           // Older Mozilla and Firefox
+//           obj.style.MozOpacity = opacity/100;
+          
+//           // Safari 1.2, newer Firefox and Mozilla, CSS3
+//           obj.style.opacity = opacity/100;
+//         }
+//         function fadeIn(objId,opacity) {
+//           if (document.getElementById) {
+//             var obj = document.getElementById(objId);
+//             if (opacity <= 100) {
+//               setOpacity(obj, opacity);
+//               opacity += 10;
+//               window.setTimeout("fadeIn('"+objId+"',"+opacity+")", 100);
+//             }
+//           }
+// }        
         
     };
     // image:url(
