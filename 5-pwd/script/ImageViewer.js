@@ -4,9 +4,10 @@
 
 var ImageViewer = function(){};
     ImageViewer.prototype.pictures = [];
-    ImageViewer.thumbnails = [];
+    ImageViewer.prototype.thumbnails = [];
     
     ImageViewer.prototype.xhrRequest = function(){
+        var that = this;
         var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function(){
                 
@@ -14,9 +15,12 @@ var ImageViewer = function(){};
                     if (xhr.status >= 200 &&
                         xhr. status <= 300 ||
                         xhr.status === 304) {
-                        console.log("xhr klar");
                         var JSONreturn = JSON.parse(xhr.responseText);
+                        var status = document.querySelectorAll("windowStatusBar");
+                        var loading = document.getElementById("loading");
                         ImageViewer.prototype.getThumbNails(JSONreturn);
+                        loading.setAttribute("style", "background-image:none");
+                        
 
                     } else {
                         console.log("felkod: " + xhr.status);
@@ -65,7 +69,6 @@ var ImageViewer = function(){};
             thumbDiv.appendChild(thumbImg);
             windowContent.appendChild(thumbDiv);
             urlCount += 1;
-            // console.log(JSONreturn[URL].thumbURL);
         }
 
         

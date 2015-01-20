@@ -13,8 +13,7 @@ Window.prototype.openWindow = function(name){
     var frame = document.createElement("div");
     var closeButton = document.createElement("div");
     var responseArray = [];
-    
-    console.log(responseArray)
+    var loading = document.createElement("div");
     
     frame.id = "frame";
     closeButton.classList.add("windowClose");
@@ -23,17 +22,17 @@ Window.prototype.openWindow = function(name){
     content.setAttribute("id", "windowContent");
     topBar.classList.add("windowTopBar");
     statusBar.classList.add("windowStatusBar");
+    loading.setAttribute("id", "loading");
     
     closeButton.addEventListener("click", Window.prototype.closeWindow, false);
-    statusBar.innerHTML = Window.prototype.counter;
     
     frame.appendChild(topBar);
     frame.appendChild(content);
+    statusBar.appendChild(loading);
     frame.appendChild(statusBar);
     topBar.appendChild(closeButton);
     main.appendChild(frame);
     Window.prototype.counter += 1;
-    console.log("WIndow created!!!!!!");
 };
 
 Window.prototype.closeWindow = function(){

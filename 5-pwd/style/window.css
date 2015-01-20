@@ -36,3 +36,11 @@
   background-color: red;
   float: right;
 }
+
+#loading {
+  height: 100%;
+  width: 100%;
+  
+  background-image: url("../pics/ajax-loader3.gif");
+  background-repeat: no-repeat;
+}
