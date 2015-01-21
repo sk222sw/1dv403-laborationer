@@ -16,8 +16,13 @@ Window.prototype.openWindow = function(name){
         var closeButton = document.createElement("div");
         var responseArray = [];
         var loading = document.createElement("div");
+        var smallImage = document.createElement("div");
+        var titleP = document.createElement("p")
+        var aTag = document.createElement("a");
         
+        titleP.classList.add("windowTitle");
         frame.id = "frame";
+        smallImage.classList.add("smallImage");
         closeButton.classList.add("windowClose");
         frame.classList.add("newWindow");
         content.classList.add("windowContent");
@@ -27,7 +32,7 @@ Window.prototype.openWindow = function(name){
         statusBar.classList.add("windowStatusBar");
         loading.setAttribute("id", "loading");
         
-        secondTop.innerHTML = "Image Viewer";
+        titleP.innerHTML = "Image Viewer";
         
         closeButton.addEventListener("click", Window.prototype.closeWindow, false);
         
@@ -36,7 +41,10 @@ Window.prototype.openWindow = function(name){
         frame.appendChild(content);
         statusBar.appendChild(loading);
         frame.appendChild(statusBar);
-        secondTop.appendChild(closeButton);
+        secondTop.appendChild(smallImage);
+        secondTop.appendChild(titleP);
+        aTag.appendChild(closeButton);
+        secondTop.appendChild(aTag);
         main.appendChild(frame);
         Window.prototype.counter += 1;
 

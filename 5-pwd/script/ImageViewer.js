@@ -31,32 +31,13 @@ var ImageViewer = function(){};
             xhr.open("GET", "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", true);
             xhr.send(null);
     };
-    
-    // ImageViewer.prototype.returnPusher = function(JSONreturn){
-        
-    //     var windowContent = document.getElementById("windowContent");    
-            
-    //         var img = document.createElement("img");
-            
-    //         var ett = JSONreturn[1].thumbURL;
-    //         img.setAttribute("src", ett);
-    //         console.log(ett);
-            
-    //         windowContent.appendChild(img);
-            
-    //     // for (var i = 0; i < 4/*JSONreturn.length*/; i++) {
-    //     //     main.appendChild(JSONreturn[i].thumbURL);
-    //     // }
-    // }
-    
+
     ImageViewer.prototype.getThumbNails = function(JSONreturn){
         var windowContent = document.getElementById("windowContent");
         var urlCount = 0;
             var width = 0;
             var height = 0;
-            
-            console.log("Json length: " + JSONreturn.length)
-            
+
         //Kolla högsta och lägsta width/height och sätt dem till variabler.    
         for (var i = 0; i < JSONreturn.length; i++) {
             if (JSONreturn[i].thumbWidth > width) {
@@ -64,7 +45,6 @@ var ImageViewer = function(){};
             }
             if (JSONreturn[i].thumbHeight > height) {
                 height = JSONreturn[i].thumbHeight;
-                
             }
         }    
             
@@ -103,9 +83,11 @@ var ImageViewer = function(){};
     
     ImageViewer.prototype.openWindow = function(){
         
+        //endast ett fönster får vara öppet åt gången:
         if (ImageViewer.prototype.windowCounter < 1) {
             Window.prototype.openWindow.call(this);
             ImageViewer.prototype.xhrRequest();
+            
             ImageViewer.prototype.windowCounter = 1;
         }
 
