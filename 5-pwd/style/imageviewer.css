@@ -9,6 +9,7 @@
     margin: 3px;
     padding: 2px;
     
+    background-color: rgba(0, 0, 0, 0.05);
     border: solid rgba(0, 0, 0, 0.2) 1px;
     
     border-radius: 5px;
@@ -23,4 +24,8 @@
     
     top: 50%;
     transform: translateY(-50%);
+}
+
+.thumbImg:hover {
+    opacity: 0.6;
 }

@@ -19,7 +19,7 @@ body {
   min-height: 100%;
   height: auto;
   height: 100%;
-  margin-bottom: -60px; 
+  margin-bottom: -55px; 
 }
 
 #main:after {
@@ -32,7 +32,8 @@ body {
 }
 
 footer, #main:after {
-  height: 60px; 
+  padding-bottom: 5px;
+  height: 55px; 
 }
 
 footer {
@@ -43,11 +44,34 @@ footer {
   /*background-color: rgba(0, 0, 0, 0.55);*/
   background-color: black;
   opacity: 0.55;
+  
+  -webkit-transition: opacity .25s ease;
+  -moz-transition: opacity .25s ease;
+  -o-transition: opacity .25s ease;  
+  transition: opacity .25s ease;
+  
+}
+
+footer:hover {
+  opacity: 0.7;
 }
 
 #iconImageViewer {
     background-image: url("../pics/imageviewerwhite.png");
     background-repeat: no-repeat;
+    
+  -webkit-transition: transform 0.75s ease; 
+  -moz-transition: transform 0.75s ease;
+  -o-transition: transform 0.75s ease;
+  transition: transform 0.75s ease;    
+}
+
+#iconImageViewer:hover {
+  -webkit-transform: rotateZ(90deg) rotateY(180deg);
+  -moz-transform: rotateZ(90deg) rotateY(180deg);
+  -o-transform: rotateZ(90deg) rotateY(180deg);
+  -ms-transform: rotateZ(90deg) rotateY(180deg);
+  transform: rotateZ(45deg) rotateY(180deg);  
 }
 
 .menuIcon {
