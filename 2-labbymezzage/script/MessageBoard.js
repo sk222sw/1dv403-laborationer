@@ -11,18 +11,21 @@
         
         
         init:function(){
+
+        		MessageBoard.textarea.addEventListener("keypress", function(e){
+                    
+        			if(e.keyCode == 13 && !e.shiftKey){
+        				e.preventDefault();
+        				MessageBoard.writeMessages();
+        			}
+
+        		});                
+
             document.getElementById("submit").onclick = MessageBoard.createMessage;
-            // console.log((new Date()).toISOString().slice(0,10).replace(/-/g," "));
-            
-                MessageBoard.textarea.keypress = function(event) {
-                        if (event.keyCode == 13 && event.shiftKey) {
-                         return false;
-                         }
-                         else {
-                         MessageBoard.writeMessages();                           
-                         }
-                };
+
         },
+        
+
         
         createMessage: function (e){
             if (MessageBoard.textarea.value !== "") {

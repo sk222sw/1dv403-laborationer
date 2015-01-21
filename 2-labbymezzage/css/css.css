@@ -21,8 +21,8 @@ main {
 #msgSection {
     position: absolute;
     display: inline-block;
-    height: 50%;
-    width: 30%;
+    height: 410px;
+    width: 425px;
     border: outset rgba(125, 87, 46, 0.3) 5px;
     left: 250px;
     bottom: 55px;
