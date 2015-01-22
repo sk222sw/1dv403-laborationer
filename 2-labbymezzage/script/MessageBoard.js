@@ -85,7 +85,7 @@
             timeA.onclick = function(){
                 alert(MessageBoard.messages[thisMess].toString());
                 return false;
-            }
+            };
         },
         
         writeMessages: function (message) {
