@@ -73,11 +73,16 @@ var ImageViewer = function(){};
         
     };
     ImageViewer.prototype.setBackground = function(JSONurl, thumbDiv){
-        
-        thumbDiv.addEventListener("click", function(){
-            var main = document.getElementById("main");
-            main.setAttribute("style", "background-image:url("+JSONurl+")");
-        });
+            thumbDiv.cancelBubble = true;
+            if(thumbDiv.addEventListener){
+            thumbDiv.addEventListener("click", function(){
+                var main = document.getElementById("main");
+                main.setAttribute("style", "background-image:url("+JSONurl+")");
+            });
+            } else if (thumbDiv.attachEvent){
+                var main = document.getElementById("main");
+                main.setAttribute("style", "background-image:url("+JSONurl+")");
+            } 
         
     };
     
